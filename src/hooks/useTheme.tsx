@@ -11,6 +11,7 @@ interface ThemeContextData {
 interface Theme {
   name: string;
   colors: {
+    purpleLight: string;
     purple: string;
     purpleDark: string;
     blue: string;
@@ -22,7 +23,13 @@ interface Theme {
     gray300: string;
     gray200: string;
     gray100: string;
+    dangerBackground: string;
     danger: string;
+    background: string;
+    headerBackground: string;
+    deleteBackground: string;
+    cardsBackground: string;
+    inputBackground: string;
   };
 }
 
