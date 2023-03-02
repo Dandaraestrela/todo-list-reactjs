@@ -19,10 +19,11 @@ export const lightTheme = {
   name: "lightTheme",
   colors: {
     ...defaultColors,
-    backgroundLight: "#F2F2F2",
-    headerBackground: "#808080",
+    background: "#F2F2F2",
+    headerBackground: "#D9D9D9",
     deleteBackground: "#FCEEEE",
     cardsBackground: "#EDEDFE",
+    inputBackground: "#F2F2F2",
   },
 };
 
@@ -30,9 +31,10 @@ export const darkTheme = {
   name: "darkTheme",
   colors: {
     ...defaultColors,
-    backgroundLight: "#1A1A1A",
+    background: "#1A1A1A",
     headerBackground: "#0D0D0D",
     deleteBackground: "#333333",
     cardsBackground: "#808080",
+    inputBackground: "#262626",
   },
 };
