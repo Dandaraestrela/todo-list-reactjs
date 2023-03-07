@@ -45,9 +45,15 @@ export const CustomThemeProvider = ({ children }: ProviderProps) => {
   const [currentTheme, setCurrentTheme] = useState<Theme>(lightTheme);
 
   const toggleTheme = useCallback(() => {
-    if (currentTheme.name === "lightTheme") setCurrentTheme(darkTheme);
+    if (currentTheme.name === "lightTheme") {
+      setCurrentTheme(darkTheme);
+      return;
+    }
 
-    if (currentTheme.name === "darkTheme") setCurrentTheme(lightTheme);
+    if (currentTheme.name === "darkTheme") {
+      setCurrentTheme(lightTheme);
+      return;
+    }
   }, [currentTheme]);
 
   return (
