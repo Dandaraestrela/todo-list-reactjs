@@ -30,6 +30,8 @@ interface Theme {
     deleteBackground: string;
     cardsBackground: string;
     inputBackground: string;
+    inputBorder: string;
+    inputFontColor: string;
   };
 }
 

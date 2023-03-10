@@ -4,7 +4,7 @@ interface SwitchProps {
   isThemeLight: boolean;
 }
 
-export const Wrapper = styled.button<SwitchProps>`
+export const ButtonWrapper = styled.button<SwitchProps>`
   display: flex;
   width: 60px;
   height: 30px;
