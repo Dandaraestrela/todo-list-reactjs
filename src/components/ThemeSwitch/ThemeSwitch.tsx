@@ -9,12 +9,12 @@ const ThemeSwitch = () => {
   const { toggleTheme, currentTheme } = useTheme();
 
   return (
-    <S.Wrapper
+    <S.ButtonWrapper
       isThemeLight={currentTheme.name === "lightTheme"}
       onClick={() => toggleTheme()}
     >
       <Sun /> <Moon />
-    </S.Wrapper>
+    </S.ButtonWrapper>
   );
 };
 

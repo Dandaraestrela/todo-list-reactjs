@@ -24,6 +24,8 @@ export const lightTheme = {
     deleteBackground: "#FCEEEE",
     cardsBackground: "#EDEDFE",
     inputBackground: "#F2F2F2",
+    inputBorder: "#808080",
+    inputFontColor: "#1A1A1A",
   },
 };
 
@@ -36,5 +38,7 @@ export const darkTheme = {
     deleteBackground: "#333333",
     cardsBackground: "#808080",
     inputBackground: "#262626",
+    inputBorder: "#0D0D0D",
+    inputFontColor: "#F2F2F2",
   },
 };
