@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
 export const Input = styled.input`
   ${({ theme: { colors } }) => css`
     height: 44px;
-    padding: 12px 12px;
+    padding: 12px;
     background-color: ${colors.inputBackground};
     border: 1px solid ${colors.inputBorder};
     border-radius: 8px;

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Wrapper = styled.main`
   display: flex;
@@ -21,4 +21,11 @@ export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 60%;
+`;
+
+export const TaskListWrapper = styled.div`
+  display: grid;
+  grid-template-rows: 1fr;
+  row-gap: 8px;
+  margin-top: 30px;
 `;
