@@ -25,7 +25,8 @@ export const lightTheme = {
     cardsBackground: "#EDEDFE",
     inputBackground: "#F2F2F2",
     inputBorder: "#808080",
-    inputFontColor: "#1A1A1A",
+    inputFontColor: "#0D0D0D",
+    taskDisabledColor: "#D9D9D9",
   },
 };
 
@@ -40,5 +41,6 @@ export const darkTheme = {
     inputBackground: "#262626",
     inputBorder: "#0D0D0D",
     inputFontColor: "#F2F2F2",
+    taskDisabledColor: "#333333",
   },
 };

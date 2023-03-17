@@ -32,6 +32,7 @@ interface Theme {
     inputBackground: string;
     inputBorder: string;
     inputFontColor: string;
+    taskDisabledColor: string;
   };
 }
 
