@@ -30,7 +30,7 @@ const Home = () => {
     e.preventDefault();
     const newTask = { id: uuidv4(), text: newTaskText, isChecked: false };
     updateTasksListOnLocalStorage([...tasksList, newTask]);
-    setTaskList((prev) => [...prev, newTask]);
+    setTaskList((prev) => [newTask, ...prev]);
 
     setNewTaskText("");
   };
