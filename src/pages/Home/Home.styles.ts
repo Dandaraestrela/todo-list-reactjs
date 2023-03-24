@@ -5,7 +5,8 @@ export const Wrapper = styled.main`
   flex-direction: column;
   align-items: center;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   background-color: ${({ theme: { colors } }) => colors.background};
 `;
 
@@ -27,5 +28,5 @@ export const TaskListWrapper = styled.div`
   display: grid;
   grid-template-rows: 1fr;
   row-gap: 8px;
-  margin-top: 30px;
+  margin: 30px 0;
 `;

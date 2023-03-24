@@ -1,47 +1,91 @@
 import { FormEvent, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
+import Task from "@/components/Task/Task";
+import EmptyList from "@/components/EmptyList/EmptyList";
 import Button from "@/components/Button/Button";
 import TextInput from "@/components/TextInput/TextInput";
 import Header from "@/components/Header/Header";
+import useTasksList from "@/hooks/useTasksList";
 
 import { ReactComponent as Plus } from "@/assets/plus.svg";
-import { ReactComponent as Notebook } from "@/assets/notebook.svg";
 
 import * as S from "./Home.styles";
-import Task from "@/components/Task/Task";
-import EmptyList from "@/components/EmptyList/EmptyList";
 
-type TaskType = {
+export type TaskType = {
   id: string;
   text: string;
   isChecked: boolean;
 };
 
 const Home = () => {
+  const { getTasksFromLocalStorage, updateTasksListOnLocalStorage } =
+    useTasksList();
   const [newTaskText, setNewTaskText] = useState("");
-  const [tasksList, setTaskList] = useState<Array<TaskType>>([]);
+  const [tasksList, setTaskList] = useState<Array<TaskType>>(
+    getTasksFromLocalStorage()
+  );
 
   const onAddTask = (e: FormEvent) => {
     e.preventDefault();
-    setTaskList((prev) => [
-      ...prev,
-      { id: uuidv4(), text: newTaskText, isChecked: false },
-    ]);
+    const newTask = { id: uuidv4(), text: newTaskText, isChecked: false };
+    updateTasksListOnLocalStorage([...tasksList, newTask]);
+    setTaskList((prev) => [...prev, newTask]);
+
     setNewTaskText("");
   };
 
   const onDeleteTask = (taskId: string) => {
-    setTaskList((prev) => prev.filter(({ id }) => id !== taskId));
+    const newTaskList = tasksList.filter(({ id }) => id !== taskId);
+    updateTasksListOnLocalStorage(newTaskList);
+    setTaskList(newTaskList);
   };
 
   const onCheckTask = (taskId: string) => {
-    setTaskList((prev) =>
-      prev.map((task) => {
-        if (task.id !== taskId) return task;
-        return { ...task, isChecked: !task.isChecked };
-      })
+    let newTaskList = [...tasksList];
+    const updatedElementIndex = tasksList.findIndex(({ id }) => id === taskId);
+    const firstCheckedTaskIndex = tasksList.findIndex(
+      ({ isChecked }) => isChecked === true
     );
+    const isCheckingTask = !tasksList[updatedElementIndex].isChecked;
+
+    if (
+      tasksList.length === 1 ||
+      (!isCheckingTask && updatedElementIndex === firstCheckedTaskIndex)
+    ) {
+      newTaskList[updatedElementIndex].isChecked =
+        !newTaskList[updatedElementIndex].isChecked;
+      updateTasksListOnLocalStorage(newTaskList);
+      setTaskList(newTaskList);
+      return;
+    }
+
+    if (!isCheckingTask) {
+      const [updatedElement] = newTaskList.splice(updatedElementIndex, 1);
+      newTaskList.splice(firstCheckedTaskIndex, 0, {
+        ...updatedElement,
+        isChecked: false,
+      });
+      updateTasksListOnLocalStorage(newTaskList);
+      setTaskList(newTaskList);
+      return;
+    }
+
+    if (firstCheckedTaskIndex === -1) {
+      const [updatedElement] = newTaskList.splice(updatedElementIndex, 1);
+      newTaskList.push({
+        ...updatedElement,
+        isChecked: !updatedElement.isChecked,
+      });
+    } else {
+      const [updatedElement] = newTaskList.splice(updatedElementIndex, 1);
+      newTaskList.splice(firstCheckedTaskIndex - 1, 0, {
+        ...updatedElement,
+        isChecked: !updatedElement.isChecked,
+      });
+    }
+    updateTasksListOnLocalStorage(newTaskList);
+    setTaskList(newTaskList);
   };
 
   return (
