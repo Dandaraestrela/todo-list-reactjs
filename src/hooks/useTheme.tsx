@@ -42,8 +42,6 @@ interface ProviderProps {
 
 const ThemeContext = createContext<ThemeContextData>({} as ThemeContextData);
 
-export const useTheme = () => useContext(ThemeContext);
-
 export const CustomThemeProvider = ({ children }: ProviderProps) => {
   const [currentTheme, setCurrentTheme] = useState<Theme>(lightTheme);
 
@@ -65,3 +63,5 @@ export const CustomThemeProvider = ({ children }: ProviderProps) => {
     </ThemeContext.Provider>
   );
 };
+
+export const useTheme = () => useContext(ThemeContext);
