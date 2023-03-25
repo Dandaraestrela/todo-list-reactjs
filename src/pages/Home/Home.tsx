@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useMemo, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import Task from "@/components/Task/Task";
@@ -24,6 +24,11 @@ const Home = () => {
   const [newTaskText, setNewTaskText] = useState("");
   const [tasksList, setTaskList] = useState<Array<TaskType>>(
     getTasksFromLocalStorage()
+  );
+
+  const concludedTasksAmount = useMemo(
+    () => tasksList.filter((task) => task.isChecked === true).length,
+    [tasksList]
   );
 
   const onAddTask = (e: FormEvent) => {
@@ -104,6 +109,22 @@ const Home = () => {
           </Button>
         </S.TaskCreatorForm>
         <S.TaskListWrapper>
+          {tasksList.length && (
+            <S.LegendsWrapper>
+              <S.LegendWrapper>
+                Tarefas criadas
+                <S.LegendNumberWrapper>
+                  {tasksList.length}
+                </S.LegendNumberWrapper>
+              </S.LegendWrapper>
+              <S.LegendWrapper concludedTask>
+                Concluídas
+                <S.LegendNumberWrapper>
+                  {concludedTasksAmount} de {tasksList.length}
+                </S.LegendNumberWrapper>
+              </S.LegendWrapper>
+            </S.LegendsWrapper>
+          )}
           {tasksList.length ? (
             tasksList.map(({ id, text, isChecked }) => (
               <Task

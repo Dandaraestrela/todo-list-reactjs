@@ -1,5 +1,9 @@
 import styled, { css } from "styled-components";
 
+type LegendType = {
+  concludedTask?: boolean;
+};
+
 export const Wrapper = styled.main`
   display: flex;
   flex-direction: column;
@@ -29,4 +33,31 @@ export const TaskListWrapper = styled.div`
   grid-template-rows: 1fr;
   row-gap: 8px;
   margin: 30px 0;
+`;
+
+export const LegendsWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const LegendWrapper = styled.div<LegendType>`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: ${({ theme: { colors }, concludedTask }) =>
+    concludedTask ? colors.purple : colors.blue};
+  font-weight: bold;
+`;
+
+export const LegendNumberWrapper = styled.div`
+  ${({ theme: { colors } }) => css`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 8px;
+    background-color: ${colors.gray400};
+    border-radius: 24px;
+    color: ${colors.gray200};
+    font-weight: bold;
+  `}
 `;
