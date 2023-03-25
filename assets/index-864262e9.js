@@ -230,7 +230,7 @@ Error generating stack: `+o.message+`
       outline-color: ${e.purple} !important;
     }
   `}
-`,Q0=j.forwardRef(({label:e,placeholder:t,value:n,onChange:r,...l},o)=>Ne(H0,{children:[e,Z(W0,{ref:o,placeholder:t,value:n,onChange:i=>r(i),...l})]})),Y0="/assets/Logo-518fa797.svg",K0=ce.div`
+`,Q0=j.forwardRef(({label:e,placeholder:t,value:n,onChange:r,...l},o)=>Ne(H0,{children:[e,Z(W0,{ref:o,placeholder:t,value:n,onChange:i=>r(i),...l})]})),Y0=""+new URL("Logo-518fa797.svg",import.meta.url).href,K0=ce.div`
   display: flex;
   align-items: flex-start;
   justify-content: center;
