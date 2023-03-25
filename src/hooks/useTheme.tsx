@@ -43,16 +43,23 @@ interface ProviderProps {
 const ThemeContext = createContext<ThemeContextData>({} as ThemeContextData);
 
 export const CustomThemeProvider = ({ children }: ProviderProps) => {
-  const [currentTheme, setCurrentTheme] = useState<Theme>(lightTheme);
+  const initialTheme =
+    localStorage.getItem("currentTheme") === "darkTheme"
+      ? darkTheme
+      : lightTheme;
+  const [currentTheme, setCurrentTheme] = useState<Theme>(initialTheme);
 
   const toggleTheme = useCallback(() => {
     if (currentTheme.name === "lightTheme") {
       setCurrentTheme(darkTheme);
+      localStorage.setItem("currentTheme", "darkTheme");
       return;
     }
 
     if (currentTheme.name === "darkTheme") {
       setCurrentTheme(lightTheme);
+      localStorage.setItem("currentTheme", "lightTheme");
+
       return;
     }
   }, [currentTheme]);
