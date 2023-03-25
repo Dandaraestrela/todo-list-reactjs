@@ -109,7 +109,7 @@ const Home = () => {
           </Button>
         </S.TaskCreatorForm>
         <S.TaskListWrapper>
-          {tasksList.length && (
+          {!!tasksList.length && (
             <S.LegendsWrapper>
               <S.LegendWrapper>
                 Tarefas criadas
