@@ -132,6 +132,7 @@ Error generating stack: `+o.message+`
   `}
 `,I0=ce.p`
   width: 100%;
+  margin-top: 2px;
   color: ${({theme:{colors:e}})=>e.inputFontColor};
   ${({theme:{colors:e},isChecked:t})=>t?pt`
           text-decoration: line-through;
