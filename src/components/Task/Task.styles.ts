@@ -25,6 +25,7 @@ export const Wrapper = styled.div<TaskStyleProps>`
 
 export const TaskText = styled.p<TaskStyleProps>`
   width: 100%;
+  margin-top: 2px;
   color: ${({ theme: { colors } }) => colors.inputFontColor};
   ${({ theme: { colors }, isChecked }) =>
     isChecked
